@@ -4,7 +4,7 @@
 NON_AUTHORIZED_LICENSES=("GPL" "AGPL" "LGPL" "MPL")
 
 # Get all package.json dependencies
-dependencies=$(npm list --json | jq -r '.dependencies | keys[]')
+dependencies=$(npm list --json --depth=0 2>/dev/null | jq -r '.dependencies | keys[]')
 
 # Create an empty array to store the non-authorized packages
 non_authorized_packages=()

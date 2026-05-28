@@ -1,9 +1,19 @@
 name: Check licenses
 description: An action to check if a license is authorized.
 
+inputs:
+  package-manager:
+    description: Package manager to use for installing dependencies (npm, bun, yarn, pnpm)
+    required: false
+    default: npm
+
 runs:
   using: composite
   steps:
+    - name: 📦 Install dependencies
+      shell: bash
+      run: ${{ inputs.package-manager }} install
+
     - name: 🧪 Run licenses check
       shell: bash
       run: bash "${{ github.action_path }}/scripts/check-licenses.sh"
