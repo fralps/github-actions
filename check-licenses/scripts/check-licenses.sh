@@ -11,6 +11,7 @@ non_authorized_packages=()
 
 # Check each dependency
 for package in $dependencies; do
+  echo "Checking license for package: $package"
   # Get the license of the package
   license=$(curl -s "https://registry.npmjs.org/$package" | jq -r '.license')
 
