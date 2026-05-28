@@ -1,0 +1,9 @@
+name: Check licenses
+description: An action to check if a license is authorized.
+
+runs:
+  using: composite
+  steps:
+    - name: 🧪 Run licenses check
+      shell: bash
+      run: bash "${{ github.action_path }}/scripts/check-licenses.sh"
