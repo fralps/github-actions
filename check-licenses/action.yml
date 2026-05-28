@@ -12,8 +12,10 @@ runs:
   steps:
     - name: 📦 Install dependencies
       shell: bash
+      working-directory: ${{ github.workspace }}
       run: ${{ inputs.package-manager }} install
 
     - name: 🧪 Run licenses check
       shell: bash
+      working-directory: ${{ github.workspace }}
       run: bash "${{ github.action_path }}/scripts/check-licenses.sh"
